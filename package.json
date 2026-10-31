@@ -1,0 +1,40 @@
+{
+  "name": "lensus",
+  "productName": "LensUS",
+  "version": "1.0.0",
+  "description": "LensUS: subscription management for camera and accessory rentals (based on the Brightloop case study)",
+  "main": "main.js",
+  "author": "Satya",
+  "license": "ISC",
+  "type": "commonjs",
+  "scripts": {
+    "start": "electron .",
+    "serve": "node server/standalone.js",
+    "test": "node test/scenario.test.js",
+    "dist": "electron-builder --win portable nsis",
+    "art": "node tools/gen-product-art.js",
+    "video": "electron tools/video/make-video.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "express": "^4.22.3",
+    "sql.js": "^1.15.2"
+  },
+  "devDependencies": {
+    "electron": "^45.2.1",
+    "electron-builder": "^26.18.0"
+  },
+  "build": {
+    "appId": "in.lensus.app",
+    "productName": "LensUS",
+    "directories": { "output": "dist" },
+    "files": ["main.js", "preload.js", "server/**", "public/**", "package.json"],
+    "asarUnpack": ["node_modules/sql.js/dist/sql-wasm.wasm"],
+    "win": { "target": ["portable", "nsis"] },
+    "portable": { "artifactName": "LensUS-${version}-portable.exe" },
+    "nsis": { "artifactName": "LensUS-${version}-setup.exe", "oneClick": false, "allowToChangeInstallationDirectory": true, "createDesktopShortcut": true }
+  }
+}

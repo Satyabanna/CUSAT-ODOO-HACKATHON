@@ -1,0 +1,23 @@
+# dependencies
+node_modules/
+tools/video/node_modules/
+
+# build output (exes, recorded video)
+dist/
+
+# local data from `npm run serve`
+data/
+*.db
+*.db.tmp
+*.log
+
+# video tool scratch files
+tools/video/work/
+
+# local assistant tooling (installed skills)
+.claude/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
